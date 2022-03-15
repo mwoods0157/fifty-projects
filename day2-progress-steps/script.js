@@ -45,3 +45,5 @@ function update() {
         next.disabled = false;
     }
 }
+
+console.log("test");
