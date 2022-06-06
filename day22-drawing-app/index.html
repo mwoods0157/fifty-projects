@@ -5,10 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>Drawing App</title>
 </head>
 <body>
-    <h1>Drawing app</h1>
+    <canvas id="canvas" width="800" height="800"></canvas>
+    <div class="toobox">
+        <button id="decrease">-</button>
+        <span class="size">20</span>
+        <button id="increase">+</button>
+        <input type="color" id="color">
+        <button id="clear">X</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
