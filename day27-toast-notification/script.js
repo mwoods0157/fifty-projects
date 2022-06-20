@@ -1,7 +1,7 @@
 const button = document.getElementById('button');
 const toasts = document.getElementById('toasts');
 
-const message = [
+const messages = [
     'Message one',
     'Message two',
     'Message three',
@@ -10,15 +10,20 @@ const message = [
 
 button.addEventListener('click', () => createNotification()) 
 
-function createNotification() {
+function createNotification(message = null, type = null) {
     const notif = document.createElement('div');
     notif.classList.add('toast');
+    notif.classList.add(type ? type : 'info');
 
-    notif.innerText = getRandomMessage();
+    notif.innerText = message ? message : getRandomMessage();
 
     toasts.appendChild(notif);
+
+    setTimeout(() => {
+        notif.remove();
+    }, 3000);
 }
 
 function getRandomMessage() {
-    return message[Math.floor(Math.random) * message.length];
+    return messages[Math.floor(Math.random) * messages.length];
 }
