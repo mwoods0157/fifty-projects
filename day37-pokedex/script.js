@@ -31,7 +31,17 @@ const createPokemonCard = (pokemon) => {
     const pokemonEl = document.createElement('div');
     pokemonEl.classList.add('pokemon');
 
-    const pokemonInnerHTML = ``;
+    const pokemonInnerHTML = `
+    <div class="pokemon" style="background-color: rgb(22, 253, 224)">
+            <div class="img-container">
+                <img src="" alt="">
+            </div>
+            <div class="info">
+                <span class="number">#001</span>
+                <h3 class="name">Bulbasaur</h3>
+                <small class="type">Type:<span>Grass</span></small>
+            </div>
+        </div>`;
 }
 
 fetchPokemons();
