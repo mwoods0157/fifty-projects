@@ -14,3 +14,38 @@ body {
     background-color: yellow;
     transform: scaleX(5);
 }
+
+.planet {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transform: scaleX(0.2);
+}
+
+#first-planet {
+    background-color: blue;
+}
+
+#second-planet {
+    background-color: red;
+}
+
+#third-planet {
+    background-color: green;
+}
+
+.route {
+    width: 100%;
+    height: 100%;
+    animation: rotate 12s infinite linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
