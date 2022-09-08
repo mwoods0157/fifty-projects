@@ -1,3 +1,16 @@
-* {
-    box-sizing: border-box;
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.planets-container {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: yellow;
+    transform: scaleX(5);
 }
