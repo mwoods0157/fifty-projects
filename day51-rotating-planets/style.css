@@ -38,6 +38,13 @@ body {
     width: 100%;
     height: 100%;
     animation: rotate 12s infinite linear;
+    position: absolute;
+}
+
+.planet-container {
+    width: 60px;
+    height: 60px;
+    animation: correct 12s infinite linear;
 }
 
 @keyframes rotate {
@@ -47,5 +54,15 @@ body {
 
     100% {
         transform: rotateZ(360deg);
+    }
+}
+
+@keyframes correct {
+    0% {
+        transform: rotateZ(360deg);
+    }
+
+    100% {
+        transform: rotateZ(0deg);
     }
 }
