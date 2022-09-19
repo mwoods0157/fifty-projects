@@ -67,6 +67,24 @@ body {
     top: 100px;
 }
 
+.planet-index {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#first-planet-index {
+    animation: hideFirstPlanet 12s infinite;
+}
+
+#second-planet-index {
+    animation: hideSecondPlanet 12s infinite;
+}
+
+#third-planet-index {
+    animation: hideThirdPlanet 12s infinite;
+}
+
 @keyframes rotate {
     0% {
         transform: rotateZ(0deg);
@@ -84,5 +102,47 @@ body {
 
     100% {
         transform: rotateZ(0deg);
+    }
+}
+
+@keyframes hideFirstPlanet {
+    0% {
+        z-index: 999;
+    }
+
+    25% {
+        z-index: -999;
+    }
+
+    100% {
+        z-index: 999;
+    }
+}
+
+@keyframes hideSecondPlanet {
+    0% {
+        z-index: -999;
+    }
+
+    60% {
+        z-index: -999;
+    }
+
+    100% {
+        z-index: -999;
+    }
+}
+
+@keyframes hideThirdPlanet {
+    0% {
+        z-index: 999;
+    }
+
+    50% {
+        z-index: -999;
+    }
+
+    100% {
+        z-index: 999;
     }
 }
