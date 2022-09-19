@@ -5,14 +5,24 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: rgb(33, 33, 33);
 }
 
 .planets-container {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background-color: yellow;
     transform: scaleX(5);
+}
+
+.sun {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: rgb(248, 244, 163);
+    box-shadow: 0 0 60px rgb(253, 203, 163) 0 0 98px rgb(184, 160, 26);
+    transform: scaleX(0.2);
 }
 
 .planet {
@@ -45,6 +55,16 @@ body {
     width: 60px;
     height: 60px;
     animation: correct 12s infinite linear;
+    position: absolute;
+}
+
+#second-planet-container {
+    left: 85px;
+}
+
+#third-planet-container {
+    left: 42.5px;
+    top: 100px;
 }
 
 @keyframes rotate {
