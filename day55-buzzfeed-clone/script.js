@@ -113,7 +113,7 @@ const populateQuestions = () => {
         question.answers.forEach(answer => {
             const answerBlock = document.createElement('div');
             answerBlock.classList.add('answer-block');
-            answerBlock.addEventListener('click', handleClick);
+            answerBlock.addEventListener('click', () => handleClick);
             const answerImage = document.createElement('img');
             answerImage.setAttribute('src', answer.image);
             answerImage.setAttribute('alt', answer.alt);
@@ -121,7 +121,16 @@ const populateQuestions = () => {
             const answerTitle = document.createElement('h3');
             answerTitle.textContent = answer.text;
 
-            answerBlock.append(answerImage, answerTitle);
+            const answerInfo = document.createElement('p');
+            const imageLink = document.createElement('a');
+            imageLink.setAttribute('href', answer.credit);
+            const sourceLink = document.createElement('a');
+            sourceLink.textContent = 'Unsplash';
+            sourceLink.setAttribute('src', 'https://www.unspalsh.com');
+            answerInfo.append(imageLink, ' to ', sourceLink);
+
+            answerBlock.append(answerImage, answerTitle, answerInfo);
+            answersBlock.append(answerBlock);
         })
 
         questionDisplay.append(answersBlock);
