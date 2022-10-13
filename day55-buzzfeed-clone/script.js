@@ -93,7 +93,17 @@ const questions = [
             }
         ]
     }
-]
+];
+
+const answers = [
+    {
+        combination: ["New York", "Pizza", "Traditional"],
+        text: "Blue Cheese",
+        image: ""
+    }
+];
+const unansweredQuestions = [];
+const chosenAnswers = [];
 
 const populateQuestions = () => {
     questions.forEach(question => {
@@ -110,10 +120,12 @@ const populateQuestions = () => {
         answersBlock.id = question.id + "-questions";
         answersBlock.classList.add('answer-options');
 
+        unansweredQuestions.push(question.id);
+
         question.answers.forEach(answer => {
             const answerBlock = document.createElement('div');
             answerBlock.classList.add('answer-block');
-            answerBlock.addEventListener('click', () => handleClick);
+            answerBlock.addEventListener('click', () => handleClick(question.id, answer.text));
             const answerImage = document.createElement('img');
             answerImage.setAttribute('src', answer.image);
             answerImage.setAttribute('alt', answer.alt);
@@ -140,6 +152,35 @@ const populateQuestions = () => {
 
 populateQuestions();
 
-const handleClick = () => {
-    console.log('clicked');
+const handleClick = (questionId, chosenAnswer) => {
+    if(unansweredQuestions.includes(questionId)) {
+        chosenAnswers.push(chosenAnswer);
+    }
+    const itemToRemove = unansweredQuestions.indexOf(questionId);
+
+    if(itemToRemove > -1) {
+        unansweredQuestions.splice(itemToRemove, 1);
+    }
+    console.log(chosenAnswers);
+    console.log(unansweredQuestions);
+
+    //disableQuestionBlock(questionId, chosenAnswer)
+    const lowestQuestionId = Math.min(...unansweredQuestions);
+    location.href = '#' + lowestQuestionId;
+
+    if (!unansweredQuestions.length) {
+        //Scroll to answer div
+        showAnswer();
+    }
+}   
+
+const showAnswer = () => {
+
+
+    const answerBlock = document.createElement('div');
+    answerBlock.classList.add('result-block');
+    const answerTitle = document.createElement('h3');
+    answerTitle.textContent = result.text;
+    const answerImage = document.createElement('img');
+    answerImage.setAttribute('src', )
 }
