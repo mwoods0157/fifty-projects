@@ -104,6 +104,7 @@ const populateQuestions = () => {
         const titleHeading = document.createElement('h2');
         titleHeading.textContent = question.text;
         titleBlock.append(titleHeading);
+        questionDisplay.append(titleBlock);
 
         const answersBlock = document.createElement('div');
         answersBlock.id = question.id + "-questions";
@@ -112,10 +113,23 @@ const populateQuestions = () => {
         question.answers.forEach(answer => {
             const answerBlock = document.createElement('div');
             answerBlock.classList.add('answer-block');
+            answerBlock.addEventListener('click', handleClick);
+            const answerImage = document.createElement('img');
+            answerImage.setAttribute('src', answer.image);
+            answerImage.setAttribute('alt', answer.alt);
+
+            const answerTitle = document.createElement('h3');
+            answerTitle.textContent = answer.text;
+
+            answerBlock.append(answerImage, answerTitle);
         })
 
-        questionDisplay.append(titleBlock);
+        questionDisplay.append(answersBlock);
     })
 }
 
 populateQuestions();
+
+const handleClick = () => {
+    console.log('clicked');
+}
