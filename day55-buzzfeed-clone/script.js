@@ -124,6 +124,7 @@ const populateQuestions = () => {
             const answerInfo = document.createElement('p');
             const imageLink = document.createElement('a');
             imageLink.setAttribute('href', answer.credit);
+            imageLink.textContent = answer.credit;
             const sourceLink = document.createElement('a');
             sourceLink.textContent = 'Unsplash';
             sourceLink.setAttribute('src', 'https://www.unspalsh.com');
