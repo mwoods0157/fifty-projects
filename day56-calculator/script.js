@@ -12,7 +12,7 @@ class Calculator {
     }
 
     delete() {
-
+        this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
     appendNumber(number) {
@@ -31,12 +31,41 @@ class Calculator {
     }
 
     compute() {
+        let computation;
+        const prev = parseFloat(this.previousOperand);
+        const current = parseFloat(this.currentOperand);
+        if (isNaN(prev) || isNaN(current)) return;
+        switch (this.operation) {
+            case '+':
+                computation = prev + current;
+                break;
+            case '-': 
+                computation = prev - current;
+                break;
+            case '*':
+                computation = prev * current;
+                break;
+            case '&#247;':
+                computation = prev / current;
+                break;
+            default:
+                return;
+        }
+        this.currentOperand = computation;
+        this.operation = undefined;
+        this.previousOperand = '';
+    }
 
+    getDisplayNumber(number) {
+        return number;
     }
 
     updateDisplay() {
         this.currentOperandTextElement.innerText = this.currentOperand;
-        this.previousOperandTextElement.innerText = this.previousOperand;
+        if (this.operation !== null) {
+            this.previousOperandTextElement.innerText = 
+            `${this.previousOperand} ${this.operation}`;
+        }
     }
 }
 
@@ -55,11 +84,26 @@ numberButtons.forEach(button => {
         calculator.appendNumber(button.innerText);
         calculator.updateDisplay();
     })
-})
+});
 
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.chooseOperation(button.innerText);
         calculator.updateDisplay();
     })
-})
+});
+
+equalsButton.addEventListener('click', () => {
+    calculator.compute();
+    calculator.updateDisplay();
+});
+
+allClearButton.addEventListener('click', () => {
+    calculator.clear();
+    calculator.updateDisplay();
+});
+
+deleteButton.addEventListener('click', () => {
+    calculator.delete();
+    calculator.updateDisplay();
+});
